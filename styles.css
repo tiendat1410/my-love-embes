@@ -4,35 +4,59 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: black;
     font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.heart-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
 }
 
 .heart {
-    position: relative;
-    width: 100px;
-    height: 90px;
-    background-color: red;
-    transform: rotate(-45deg);
-    margin-bottom: 50px;
-}
-
-.heart::before,
-.heart::after {
-    content: "";
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: red;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
+    background: red;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.heart p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.heart-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 280px;
+    height: 280px;
+    background: transparent;
     border-radius: 50%;
+    animation: particle 2s infinite;
+    transform-origin: center;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    box-shadow: 0 0 10px 10px rgba(255, 0, 0, 0.5);
 }
 
-.heart::before {
-    top: -50px;
-    left: 0;
-}
-
-.heart::after {
-    top: 0;
-    left: 50px;
+@keyframes particle {
+    0%, 100% {
+        box-shadow: 0 0 10px 10px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px 20px rgba(255, 0, 0, 1);
+    }
 }
