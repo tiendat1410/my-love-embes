@@ -14,7 +14,7 @@ body {
     height: 90px;
     background-color: red;
     transform: rotate(-45deg);
-    animation: pulse 1s infinite;
+    margin-bottom: 50px;
 }
 
 .heart::before,
@@ -35,29 +35,4 @@ body {
 .heart::after {
     top: 0;
     left: 50px;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1) rotate(-45deg);
-    }
-    50% {
-        transform: scale(1.1) rotate(-45deg);
-    }
-}
-
-.message {
-    position: absolute;
-    top: 60%;
-    text-align: center;
-    color: #333;
-}
-
-.message h1 {
-    margin: 0;
-    font-size: 2rem;
-}
-
-.message p {
-    font-size: 1.2rem;
 }
