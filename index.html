@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Em đồng ý làm vợ anh nha</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+        .button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #yesBtn {
+            background-color: #4CAF50;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #ff6600;
+            height: 30px;
+        }
+        #image-container {
+            margin-top: 20px;
+        }
+        #image-container img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Em đồng ý làm vợ anh nha</h1>
+
+    <button id="yesBtn" class="button">Đồng ý</button>
+    <button id="noBtn" class="button">Không</button>
+
+    <div id="message">Đồng ý đi nèo</div> 
+
+    <div id="image-container">
+        <img id="changingImage" src="my_love_6.jpg" alt="Cute Image">
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const message = document.getElementById('message');
+        const image = document.getElementById('changingImage');
+
+        const messages = [
+            "Em chọn lại đi",
+            "Đồng ý không anh buồn lắm đó",
+            "Em chắc chưa",         
+            "Đừng làm anh khóc nha"
+        ];
+
+        const images = [
+            'my_love_1.jpg',
+            'my_love_2.jpg',
+            'my_love_3.jpg',
+            'my_love_4.jpg',
+            'my_love_5.jpg', 
+            'my_love_6.jpg'         
+        ];
+
+        let clickCount = 0;
+        let messageIndex = 0;  // Chỉ số của tin nhắn hiện tại
+
+        noBtn.addEventListener('click', () => {
+            // Tăng kích thước nút Đồng ý
+            let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize + 5) + 'px';
+
+            // Hiển thị tin nhắn theo thứ tự
+            message.textContent = messages[messageIndex];
+
+            // Thay đổi hình ảnh
+            image.src = images[clickCount % images.length];
+            clickCount++;
+
+            // Tăng chỉ số tin nhắn để hiển thị tin tiếp theo
+            messageIndex = (messageIndex + 1) % messages.length;
+
+            // Căn giữa lại nút "Đồng ý"
+            yesBtn.style.display = 'inline-block';
+        });
+
+        yesBtn.addEventListener('click', () => {
+            alert('Yêu vợ 😘');
+
+            // Thay đổi hình ảnh thành ảnh số 8
+            image.src = 'my_love_8.jpg';
+
+            // Ẩn tin nhắn chứa chữ
+            message.style.display = 'none'; 
+
+            // Ẩn nút "Không"
+            noBtn.style.display = 'none'; 
+        });
+    </script>
+
+</body>
+</html>
