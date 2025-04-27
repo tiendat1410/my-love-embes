@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Không giận dỗi anh nữa nha</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+        .button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #yesBtn {
+            background-color: #4CAF50;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #ff6600;
+            height: 30px;
+        }
+        #image-container {
+            margin-top: 20px;
+        }
+        #image-container img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Không giận dỗi anh nữa nha</h1>
+
+    <button id="yesBtn" class="button">Đồng ý</button>
+    <button id="noBtn" class="button">Không</button>
+
+    <div id="message">Đồng ý đi nèo</div> 
+
+    <div id="image-container">
+        <img id="changingImage" src="my_love_6.jpg" alt="Cute Image">
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const message = document.getElementById('message');
+        const image = document.getElementById('changingImage');
+
+        const messages = [
+            "Em chọn lại đi",
+            "Đồng ý không anh buồn lắm đó",                 
+            "Đừng làm anh khóc mà"
+        ];
+
+        const images = [
+            'my_love_1.jpg',
+            'my_love_2.jpg',
+            'my_love_3.jpg',
+            'my_love_4.jpg',
+            'my_love_5.jpg'    
+        ];
+
+        let clickCount = 0;
+        let messageIndex = 0; 
+
+        noBtn.addEventListener('click', () => {
+            
+            let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize + 5) + 'px';
+          
+            message.textContent = messages[messageIndex];
+       
+            image.src = images[clickCount % images.length];
+            clickCount++;
+
+            messageIndex = (messageIndex + 1) % messages.length;
+
+            yesBtn.style.display = 'inline-block';
+        });
+
+        yesBtn.addEventListener('click', () => {
+            alert('Yêu em bé 😘');
+
+            image.src = 'my_love_8.jpg';
+
+            message.style.display = 'none'; 
+
+            noBtn.style.display = 'none'; 
+        });
+    </script>
+
+</body>
+</html>
